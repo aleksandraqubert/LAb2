@@ -1,0 +1,76 @@
+aleksandra@aleksandra-VirtualBox:~$ nano addressbook
+
+addressbook_file="addressbook.txt"  # Имя файла адресной книги
+
+# Проверка наличия файла адресной книги и его создания, если файл не существует
+if [ ! -e "$addressbook_file" ]; then
+    touch "$addressbook_file"
+fi
+
+# Функция добавления записи
+add_contact() {
+    name="$1"
+    email="$2"
+    echo "$name $email" >> "$addressbook_file"
+}
+
+# Функция удаления всех записей для заданного имени
+remove_contact() {
+    name="$1"
+    sed -i "/^$name/d" "$addressbook_file"
+}
+
+# Функция удаления всех записей из файла
+clear_addressbook() {
+    > "$addressbook_file"
+}
+
+# Функция вывода всех записей или адресов для заданного имени
+list_contacts() {
+    if [ -s "$addressbook_file" ]; then
+        if [ "$1" ]; then
+            grep "^$1" "$addressbook_file" | awk '{print $2}'
+        else
+            cat "$addressbook_file"
+        fi
+    else
+        echo "Адреснная книга пустая"
+    fi
+}
+
+# Главный блок обработки команд
+case "$1" in
+    new)
+        name="$2"
+        email="$3"
+        add_contact "$name" "$email"
+        ;;
+    remove)
+        name="$2"
+        remove_contact "$name"
+        ;;
+    clear)
+        clear_addressbook
+        ;;
+    lookup)
+        name="$2"
+        list_contacts "$name"
+        ;;
+    list)
+        list_contacts
+        ;;
+    *)
+        echo "Неизвестная команда: $1"
+        echo "Доступные команды: new, remove, clear, lookup, list"
+        ;;
+esac
+
+aleksandra@aleksandra-VirtualBox:~$ chmod +x addressbook
+aleksandra@aleksandra-VirtualBox:~$ ./addressbook new "Aleksandra Tkachenko" agmail.com
+aleksandra@aleksandra-VirtualBox:~$ ./addressbook list
+Aleksandra Tkachenko agmail.com
+aleksandra@aleksandra-VirtualBox:~$ ./addressbook remove "Aleksandra Tkachenko"
+aleksandra@aleksandra-VirtualBox:~$ ./addressbook clear
+aleksandra@aleksandra-VirtualBox:~$ ./addressbook lookup "Aleksandra Tkachenko"
+Адреснная книга пустая
+aleksandra@aleksandra-VirtualBox:~$ 
