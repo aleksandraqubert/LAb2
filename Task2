@@ -1,0 +1,40 @@
+aleksandra@aleksandra-VirtualBox:~$ nano filecreator.sh
+aleksandra@aleksandra-VirtualBox:~$ chmod +x filecreator.sh
+aleksandra@aleksandra-VirtualBox:~$ ./filecreator.sh
+aleksandra@aleksandra-VirtualBox:~$ ls
+ Aleksandra1    Aleksandra19   Aleksandra5                 tmp
+ Aleksandra10   Aleksandra2    Aleksandra6                 tmp1
+ Aleksandra11   Aleksandra20   Aleksandra7                 Видео
+ Aleksandra12   Aleksandra21   Aleksandra8                 Документы
+ Aleksandra13   Aleksandra22   Aleksandra9                 Загрузки
+ Aleksandra14   Aleksandra23   batchrename.sh              Изображения
+ Aleksandra15   Aleksandra24   filecreator.sh              Музыка
+ Aleksandra16   Aleksandra25   last_number.txt             Общедоступные
+ Aleksandra17   Aleksandra3    snap                       'Рабочий стол'
+ Aleksandra18   Aleksandra4   'systemctl --type=service'   Шаблоны
+aleksandra@aleksandra-VirtualBox:~$ cat last_number.txt
+25
+aleksandra@aleksandra-VirtualBox:~$ rm Aleksandra
+rm: невозможно удалить 'Aleksandra': Нет такого файла или каталога
+aleksandra@aleksandra-VirtualBox:~$ nano filecreator.sh
+aleksandra@aleksandra-VirtualBox:~$ rm Aleksandra25
+aleksandra@aleksandra-VirtualBox:~$ ./filecreator.sh
+aleksandra@aleksandra-VirtualBox:~$ ls
+ Aleksandra1    Aleksandra24   Aleksandra4    Aleksandra9
+ Aleksandra10   Aleksandra26   Aleksandra40   batchrename.sh
+ Aleksandra11   Aleksandra27   Aleksandra41   filecreator.sh
+ Aleksandra12   Aleksandra28   Aleksandra42   last_number.txt
+ Aleksandra13   Aleksandra29   Aleksandra43   snap
+ Aleksandra14   Aleksandra3    Aleksandra44  'systemctl --type=service'
+ Aleksandra15   Aleksandra30   Aleksandra45   tmp
+ Aleksandra16   Aleksandra31   Aleksandra46   tmp1
+ Aleksandra17   Aleksandra32   Aleksandra47   Видео
+ Aleksandra18   Aleksandra33   Aleksandra48   Документы
+ Aleksandra19   Aleksandra34   Aleksandra49   Загрузки
+ Aleksandra2    Aleksandra35   Aleksandra5    Изображения
+ Aleksandra20   Aleksandra36   Aleksandra50   Музыка
+ Aleksandra21   Aleksandra37   Aleksandra6    Общедоступные
+ Aleksandra22   Aleksandra38   Aleksandra7   'Рабочий стол'
+ Aleksandra23   Aleksandra39   Aleksandra8    Шаблоны
+aleksandra@aleksandra-VirtualBox:~$ cat last_number.txt
+50
