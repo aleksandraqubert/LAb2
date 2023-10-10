@@ -1,4 +1,27 @@
 aleksandra@aleksandra-VirtualBox:~$ nano filecreator.sh
+
+# Проверьте, существует ли файл для сохранения последнего номера
+if [ -e "last_number.txt" ]; then
+    last_number=$(cat last_number.txt)
+else
+    last_number=0
+fi
+
+# Имя, которое вы можете изменить на свое
+yourName="Aleksandra"
+
+# Количество файлов, которые вы хотите создать
+file_count=25
+
+# Создание 25 пустых файлов с именами в указанном формате
+for ((i = 1; i <= file_count; i++)); do
+    filename="${yourName}$((last_number + i))"
+    touch "$filename"
+done
+
+# Сохранение последнего номера
+echo $((last_number + file_count)) > last_number.txt
+
 aleksandra@aleksandra-VirtualBox:~$ chmod +x filecreator.sh
 aleksandra@aleksandra-VirtualBox:~$ ./filecreator.sh
 aleksandra@aleksandra-VirtualBox:~$ ls
@@ -14,9 +37,6 @@ aleksandra@aleksandra-VirtualBox:~$ ls
  Aleksandra18   Aleksandra4   'systemctl --type=service'   Шаблоны
 aleksandra@aleksandra-VirtualBox:~$ cat last_number.txt
 25
-aleksandra@aleksandra-VirtualBox:~$ rm Aleksandra
-rm: невозможно удалить 'Aleksandra': Нет такого файла или каталога
-aleksandra@aleksandra-VirtualBox:~$ nano filecreator.sh
 aleksandra@aleksandra-VirtualBox:~$ rm Aleksandra25
 aleksandra@aleksandra-VirtualBox:~$ ./filecreator.sh
 aleksandra@aleksandra-VirtualBox:~$ ls
