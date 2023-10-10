@@ -1,1 +1,29 @@
+aleksandra@aleksandra-VirtualBox:~$ nano batchrename.sh
 
+if [ "$#" -ne 3 ]; then
+    echo "Использование: $0 <каталог> <оригинальное расширение> <новое расширение>"
+    exit 1
+fi
+
+# Получить аргументы
+directory="$1"
+original_ext="$2"
+new_ext="$3"
+
+# Перейти в каталог
+cd "$directory" || exit 1
+
+# Найти файлы с оригинальным расширением и переименовать их
+for file in *."$original_ext"; do
+    if [ -e "$file" ]; then
+        new_file="${file%.$original_ext}.$new_ext"
+        mv "$file" "$new_file"
+        echo "Переименовываю $file на $new_file"
+    fi
+done
+
+aleksandra@aleksandra-VirtualBox:~$ chmod +x batchrename.sh
+aleksandra@aleksandra-VirtualBox:~$ mkdir tmp && touch tmp/{a..z}.dat
+aleksandra@aleksandra-VirtualBox:~$ ./batchrename.sh tmp dat txt
+aleksandra@aleksandra-VirtualBox:~$  ls -lAh tmp | grep .txt | wc -l
+26
