@@ -1,4 +1,4 @@
-aleksandra@aleksandra-VirtualBox:~$ nano addressbook
+aleksandra@aleksandra-VirtualBox:~$ nano addressbook.sh
 
 addressbook_file="addressbook.txt"  # Имя файла адресной книги
 
@@ -65,12 +65,12 @@ case "$1" in
         ;;
 esac
 
-aleksandra@aleksandra-VirtualBox:~$ chmod +x addressbook
-aleksandra@aleksandra-VirtualBox:~$ ./addressbook new "Aleksandra Tkachenko" agmail.com
-aleksandra@aleksandra-VirtualBox:~$ ./addressbook list
+aleksandra@aleksandra-VirtualBox:~$ chmod +x addressbook.sh
+aleksandra@aleksandra-VirtualBox:~$ ./addressbook.sh new "Aleksandra Tkachenko" agmail.com
+aleksandra@aleksandra-VirtualBox:~$ ./addressbook.sh list
 Aleksandra Tkachenko agmail.com
-aleksandra@aleksandra-VirtualBox:~$ ./addressbook remove "Aleksandra Tkachenko"
-aleksandra@aleksandra-VirtualBox:~$ ./addressbook clear
-aleksandra@aleksandra-VirtualBox:~$ ./addressbook lookup "Aleksandra Tkachenko"
+aleksandra@aleksandra-VirtualBox:~$ ./addressbook.sh remove "Aleksandra Tkachenko"
+aleksandra@aleksandra-VirtualBox:~$ ./addressbook.sh clear
+aleksandra@aleksandra-VirtualBox:~$ ./addressbook.sh lookup "Aleksandra Tkachenko"
 Адреснная книга пустая
 aleksandra@aleksandra-VirtualBox:~$ 
